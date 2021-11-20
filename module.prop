@@ -1,8 +1,8 @@
-id=magisk-captive-control
-name=Magisk Captive Control (MCC)
-version=v1.0.0
-versionCode=100
-author=Atrate
+id=magisk-captive-manager
+name=Magisk Captive Manager (MCM)
+version=v1.1.0
+versionCode=110
+author=muink
 description=A Magisk Module aiming to control (change/disable) Android Captive Portal Detection.
-support=https://gitlab.com/Atrate/magisk-captive-control
+support=https://gitlab.com/muink/Magisk-Captive-Manager
 minMagisk=2000

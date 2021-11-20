@@ -1,7 +1,7 @@
-# Magisk Captive Control (MCC)
+# Magisk Captive Magisk-Captive-Manager (MCC)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
-If you're on GitHub and want to create a Pull/Merge Request, head to this project's [GitLab repo.](https://gitlab.com/Atrate/magisk-captive-control)
+If you're on GitHub and want to create a Pull/Merge Request, head to this project's [GitLab repo.](https://gitlab.com/muink/magisk-captive-manager)
 
 ## Description
 A Magisk module designed to change the default Android Captive Portal Detection behaviour. It allows the users to either change the default CPD URL from Google's to Kuketz (a security and privacy researcher) or completely disable it. Disabling CPD completely is useful when Android System (UID 1000) is denied all network traffic through a firewall (e.g. AFWall).
@@ -14,7 +14,7 @@ OR
 1. Download the module from the releases
 2. Flash the module through Magisk Manager or TWRP/OrangeFox
 
-### Grab the newest release on [GitLab](https://gitlab.com/Atrate/magisk-captive-control/releases) or [GitHub](https://github.com/Atrate/magisk-captive-control/releases)
+### Grab the newest release on [GitLab](https://gitlab.com/muink/magisk-captive-manager/releases) or [GitHub](https://github.com/muink/magisk-captive-manager/releases)
 
 ---
 
