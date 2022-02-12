@@ -81,7 +81,7 @@ if "$FUNC"; then
     ui_print "--- Select Captive Portal Detection address ---"
     ui_print " "
 
-    for _key in msftedge cloudflare qualcomm kuketz; do
+    for _key in msftedge cloudflare qualcomm samsung kuketz; do
         ui_print " "
         ui_print "  Change to $_key  "
         ui_print "  Vol+ = Yes , Vol- = No  "

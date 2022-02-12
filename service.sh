@@ -20,6 +20,7 @@ MCC_ADDR=<ADDRS>
 msftedge='edge.microsoft.com/captiveportal/generate_204'
 cloudflare='cp.cloudflare.com/generate_204'
 qualcomm='www.qualcomm.cn/generate_204'
+samsung='connectivity.samsung.com.cn/generate_204'
 kuketz='captiveportal.kuketz.de'
 
 # Set the Captive Portal URL to other than Google
@@ -45,6 +46,10 @@ case "$MCC_ADDR" in
     qualcomm)
       settings put global captive_portal_http_url "http://${qualcomm}"
       settings put global captive_portal_https_url "https://${qualcomm}"
+    ;;
+    samsung)
+      settings put global captive_portal_http_url "http://${samsung}"
+      settings put global captive_portal_https_url "https://${samsung}"
     ;;
     kuketz)
       settings put global captive_portal_http_url "http://${kuketz}"
