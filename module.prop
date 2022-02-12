@@ -1,7 +1,7 @@
 id=magisk-captive-manager
 name=Magisk Captive Manager (MCM)
-version=v1.1.0
-versionCode=110
+version=v1.1.1
+versionCode=111
 author=muink
 description=A Magisk Module aiming to control (change/disable) Android Captive Portal Detection.
 support=https://gitlab.com/muink/Magisk-Captive-Manager
