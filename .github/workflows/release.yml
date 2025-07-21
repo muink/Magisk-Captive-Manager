@@ -1,0 +1,41 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get id from module.prop
+        shell: bash
+        run: |
+          ID=$(grep "id=" module.prop | cut -d= -f2)
+          echo "ID=$ID" >> $GITHUB_ENV
+
+      - name: Get version from tag
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
+
+      - name: List files in the repository
+        run: ls -R
+
+      - name: Zip module
+        shell: bash
+        run: |
+          zip -r ${{ env.ID }}-${{ env.VERSION }}.zip *
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ID }}-${{ env.VERSION }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
