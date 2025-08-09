@@ -1,3 +1,7 @@
+## v2.1.2
+
+- use action.sh instead of mcm
+
 ## v2.1.1
 
 - Fixes and Improvements

@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 # Copyright (C) 2022 muink <hukk1996@gmail.com>
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; version 3 of the License.
@@ -15,17 +15,6 @@
 # --------------------------------------------------
 
 #----> quote: https://github.com/Magisk-Modules-Repo/MagiskHidePropsConf/blob/master/system/binpath/props
-
-# ====================================================
-# ==================== Root check ====================
-# ====================================================
-
-# Check for access to the Magisk internals. No access == no root
-ls /data/adb>/dev/null 2>&1
-if [ "$?" != 0 ]; then
-	su -c mcm "$@" # Rerun script with root access
-	exit
-fi
 
 # Startup message
 echo ""
@@ -51,7 +40,7 @@ kuketz='captiveportal.kuketz.de'
 
 # ======== Menu ========
 
-keytest() 
+keytest()
 {
     echo "- Vol Key Test -"
     echo "   Press Vol Up:"
@@ -59,7 +48,7 @@ keytest()
     return 0
 }
 
-choose() 
+choose()
 {
     #note from chainfire @xda-developers: getevent behaves weird when piped, and busybox grep likes that even less than toolbox/toybox grep
     while (true); do
@@ -186,4 +175,3 @@ else
 fi
 
 # https://android.stackexchange.com/questions/186993/captive-portal-parameters
-exit 0
