@@ -14,14 +14,33 @@
 # Thanks to Jman420 for these volume input functions
 # --------------------------------------------------
 
-#----> quote: https://github.com/Magisk-Modules-Repo/MagiskHidePropsConf/blob/master/system/binpath/props
+if ! $BOOTMODE; then
+    ui_print "================================================="
+    ui_print "! ERROR: Installation from recovery NOT supported"
+    ui_print "! Please use Magisk / KernelSU / APatch app"
+    ui_print "================================================="
+    abort
+fi
+
+# Android < 7.1.1 not supported
+[ "$API" -lt 25 ] && abort "❌ Android < 7.1.1 is not supported!"
+
+sleep_pause() {
+    # APatch and KernelSU needs this
+    # but not KSU_NEXT, MMRL
+    if [ -z "$MMRL" ] && [ -z "$KSU_NEXT" ] && { [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; }; then
+        sleep 6
+    fi
+}
 
 # Startup message
 echo ""
-echo "Loading... Please wait."
+cat <<-EOF
+  Current captive_portal_mode:       $(settings get global captive_portal_mode)
+  Current captive_portal_http_url:   $(settings get global captive_portal_http_url)
+  Current captive_portal_https_url:  $(settings get global captive_portal_https_url)
+EOF
 echo ""
-
-# <---- end of quote
 
 # ======== Init variables ========
 
@@ -165,9 +184,10 @@ esac
 # Disable Captive Portal Detection if it is desired
 # -------------------------------------------------
 if [ "$MCC_MODE" -eq 0 ]; then
-    settings put global captive_portal_server localhost
-    settings put global captive_portal_detection_enabled 0
-    settings put global captive_portal_mode 0
+    # Android < 7.1.1
+    #    settings put global captive_portal_server localhost
+    #    settings put global captive_portal_detection_enabled 0
+    settings put global captive_portal_mode 0 # 0: Don’t attempt to detect captive portals; 1: When detecting a captive portal, display a notification that prompts the user to sign in (default); 2: When detecting a captive portal, immediately disconnect from the network and do not reconnect to that network in the future
 else
     settings delete global captive_portal_server
     settings delete global captive_portal_detection_enabled
@@ -175,3 +195,5 @@ else
 fi
 
 # https://android.stackexchange.com/questions/186993/captive-portal-parameters
+echo "🎉 Operation completed successfully!"
+sleep_pause
