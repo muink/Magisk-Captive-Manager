@@ -56,6 +56,8 @@ cloudflare='cp.cloudflare.com/generate_204'
 qualcomm='www.qualcomm.cn/generate_204'
 samsung='connectivity.samsung.com.cn/generate_204'
 kuketz='captiveportal.kuketz.de'
+graphene='connectivitycheck.grapheneos.network/generate_204'
+graphene_fallback='http://grapheneos.online/gen'
 
 # ======== Menu ========
 
@@ -129,7 +131,7 @@ if "$FUNC"; then
     echo "--- Select Captive Portal Detection address ---"
     echo " "
 
-    for _key in msftedge cloudflare qualcomm samsung kuketz; do
+    for _key in msftedge cloudflare qualcomm samsung kuketz graphene; do
         echo " "
         echo "  Change to $_key  "
         echo "  Vol+ = Yes , Vol- = No  "
@@ -157,6 +159,8 @@ case "$MCC_ADDR" in
     0)
       settings delete global captive_portal_http_url
       settings delete global captive_portal_https_url
+      settings delete global captive_portal_fallback_url
+      settings delete global captive_portal_other_fallback_urls
     ;;
     msftedge)
       settings put global captive_portal_http_url "http://${msftedge}"
@@ -177,6 +181,12 @@ case "$MCC_ADDR" in
     kuketz)
       settings put global captive_portal_http_url "http://${kuketz}"
       settings put global captive_portal_https_url "https://${kuketz}"
+    ;;
+    graphene)
+      settings put global captive_portal_http_url "http://${graphene}"
+      settings put global captive_portal_https_url "https://${graphene}"
+      settings put global captive_portal_fallback_url "${graphene_fallback}_204"
+      settings put global captive_portal_other_fallback_urls "${graphene_fallback}erate_204"
     ;;
     *) >/dev/null echo ? ;;
 esac
