@@ -1,3 +1,7 @@
+## v2.1.4
+
+- feat: Add graphene captive portal by @brian6932
+
 ## v2.1.3
 
 - Fixes and Improvements
