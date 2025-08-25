@@ -31,7 +31,7 @@ jobs:
       - name: Zip module
         shell: bash
         run: |
-          zip -r ${{ env.ID }}-${{ env.VERSION }}.zip *
+          zip -r ${{ env.ID }}-${{ env.VERSION }}.zip * -x update.json
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
